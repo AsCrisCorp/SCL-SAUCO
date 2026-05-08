@@ -71,28 +71,28 @@ require_once "./controller/proveedorControlador.php";
                                             <div class="modal-body">
 
                                                 <!-- FORMULARIO DE REGISTROS DE ORDENES DE COMPRA -->
-                                                <form class="ps-3 pe-3" action="#">
+                                                <form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/ordenCompraAjax.php" method="POST" data-form="save" autocomplete="off">>
                                                     <div class="row">
                                                         <div class="col-md-3 mb-3">
                                                             <label class="form-label">Serie</label>
-                                                            <input type="text" class="form-control" name="Compra_Serie" maxlength="4" required>
+                                                            <input type="text" class="form-control" name="ordenC_Serie_reg" maxlength="4" required>
                                                         </div>
                                                         <div class="col-md-3 mb-3">
                                                             <label class="form-label">Correlativo</label>
-                                                            <input type="text" class="form-control" name="Compra_Correlativo" maxlength="10" required>
+                                                            <input type="text" class="form-control" name="ordenC_Correlativo_reg" maxlength="10" required>
                                                         </div>
                                                         <div class="col-md-3 mb-3">
                                                             <label class="form-label">Fecha de Emisión</label>
-                                                            <input type="date" class="form-control" name="Compra_FechaEmision" required>
+                                                            <input type="date" class="form-control" name="ordenC_FechaEmision_reg" required>
                                                         </div>
                                                         <div class="col-md-3 mb-3">
                                                             <label class="form-label">Fecha de Vencimiento</label>
-                                                            <input type="date" class="form-control" name="Compra_FechaVencimiento" required>
+                                                            <input type="date" class="form-control" name="ordenC_FechaVencimiento_reg" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="example-select" class="form-label">Proveedores</label>
-                                                            <select class="form-select" id="example-select">
-
+                                                            <select class="form-select" id="example-select" name="ordenC_Proveedor_reg">
+                                                                <option value="0">--Selecciona Proveedor</option>
                                                                 <?php
                                                                 $inst_proveedor = new proveedorControlador();
                                                                 // Corregido: Asignamos el resultado a la variable
@@ -113,11 +113,11 @@ require_once "./controller/proveedorControlador.php";
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Descripción</label>
-                                                            <textarea class="form-control" name="Compra_Detalle" rows="2" required></textarea>
+                                                            <textarea class="form-control" name="ordenC_Detalle_reg" rows="2" required></textarea>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="example-select" class="form-label">Tipo de Cssto</label>
-                                                            <select class="form-select" id="example-select">
+                                                            <select class="form-select" id="example-select" name="ordenC_TCosto_reg">
                                                                 <option value="">Seleccionar...</option>
                                                                 <option>Costo Variable - CV</option>
                                                                 <option>Costo Fijo - CF</option>
@@ -126,35 +126,35 @@ require_once "./controller/proveedorControlador.php";
                                                             </select>
                                                         </div>
                                                         <div class="col-md-3 mb-3">
-                                                            <input type="checkbox" class="form-check-input" id="customCheckcolor1" checked>
+                                                            <input type="checkbox" class="form-check-input" id="customCheckcolor1" name="ordenC_Inafecto_reg">
                                                             <label class="form-check-label" for="customCheckcolor1">Inafecto</label>
                                                         </div>
                                                         <br><label class="form-label"></label>
                                                         <!-- Calculo de precio total de la orden de compra -->
                                                         <div class="col-md-4 mb-4">
                                                             <label class="form-label">Subtotal</label>
-                                                            <input type="number" step="0.01" class="form-control" name="Compra_Subtotal" required>
+                                                            <input type="number" step="0.01" class="form-control" name="ordenC_Subtotal_reg" name="orden" required>
                                                         </div>
                                                         <div class="col-md-4 mb-4">
                                                             <label class="form-label">IGV</label>
-                                                            <input type="number" step="0.01" class="form-control" name="Compra_Total" required>
+                                                            <input type="number" step="0.01" class="form-control" name="ordenC_Igv_reg" required>
                                                         </div>
                                                         <div class="col-md-4 mb-4">
                                                             <label class="form-label">Total</label>
-                                                            <input type="number" step="0.01" class="form-control" name="Compra_Total" required>
+                                                            <input type="number" step="0.01" class="form-control" name="ordenC_Total_reg" required>
                                                         </div>
                                                         <!-- seleccionar si la orden de compra existe percepción  o detracción -->
                                                         <div class="col-md-5 mb-3">
                                                             <label class="form-label">Percepción</label>
-                                                            <input type="number" step="0.01" class="form-control" name="Compra_Percepcion" required>
+                                                            <input type="number" step="0.01" class="form-control" name="ordenC_Percepcion_reg" required>
                                                         </div>
                                                         <div class="col-md-5 mb-3">
                                                             <label class="form-label">Detracción</label>
-                                                            <input type="number" step="0.01" class="form-control" name="Compra_Detraccion" required>
+                                                            <input type="number" step="0.01" class="form-control" name="Compra_Detraccion_reg" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Estado</label>
-                                                            <select class="form-select" name="Compra_Estado" required>
+                                                            <select class="form-select" name="ordenC_Estado_reg" required>
                                                                 <option value="">Selecciona...</option>
                                                                 <option value="1">Pagado</option>
                                                                 <option value="0">Pendiente</option>
@@ -166,7 +166,7 @@ require_once "./controller/proveedorControlador.php";
                                                             <Label class="form-label">Subir Orden de compra (Archivo PDF).</Label>
                                                             <!-- subir archivo pdf  -->
                                                             <div class="input-group mb-3">
-                                                                <input type="file" class="form-control" id="inputGroupFile01">
+                                                                <input type="file" class="form-control" id="inputGroupFile01" name="ordenC_Ocpdf_reg">
                                                             </div>
                                                             <!-- fin subir archivo pdf -->
                                                         </div>
@@ -176,33 +176,33 @@ require_once "./controller/proveedorControlador.php";
                                                             <Label class="form-label">Subir Documento de Pago (Archivo PDF).</Label>
                                                             <!-- subir archivo pdf  -->
                                                             <div class="input-group mb-3">
-                                                                <input type="file" class="form-control" id="inputGroupFile01">
+                                                                <input type="file" class="form-control" id="inputGroupFile01" name="ordenC_Bancopdf_re">
                                                             </div>
                                                             <!-- fin subir archivo pdf -->
                                                         </div>
                                                         <!-- FIN BANCOS -->
 
-                                                        <!-- BORDEN DE COMPRA PDF  -->
+                                                        <!--  FACTURA PDF  -->
                                                         <div class="mb-3">
                                                             <Label class="form-label">Subir Factura (Archivo PDF).</Label>
                                                             <!-- subir archivo pdf  -->
                                                             <div class="input-group mb-3">
-                                                                <input type="file" class="form-control" id="inputGroupFile01">
+                                                                <input type="file" class="form-control" id="inputGroupFile01" name="ordenC_Factura_reg">
                                                             </div>
                                                             <!-- fin subir archivo pdf -->
                                                         </div>
                                                         <!-- FIN ORDEN DE COMPRA  -->
 
-                                                        <!-- FACTURA   -->
+                                                        <!--GUIA DE REMISION PDF   -->
                                                         <div class="mb-3">
                                                             <Label class="form-label">Subir Guía de Remisión (Archivo PDF).</Label>
                                                             <!-- subir archivo pdf  -->
                                                             <div class="input-group mb-3">
-                                                                <input type="file" class="form-control" id="inputGroupFile01">
+                                                                <input type="file" class="form-control" id="inputGroupFile01" name="ordenC_Guia_reg">
                                                             </div>
                                                             <!-- fin subir archivo pdf -->
                                                         </div>
-                                                        <!-- FIN BANCOS -->
+                                                        <!-- FIN GUIA DE REMISION -->
                                                         <button type="submit" class="btn btn-primary">Registrar Compra</button>
                                                     </div>
                                                     <!-- REGISTROS DE ORDENES DE COMPRA  -->-

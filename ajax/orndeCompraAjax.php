@@ -4,17 +4,17 @@ $peticionAjax = true;
 require_once "../config/APP.php";
 
 // re-direcciona al login cuando intente ingresar a las carpetas ajax
-if (isset($_POST['empresa_nombre_reg']) || isset($_POST['empresa_id_up'])) {
+if (isset($_POST['ordenC_Serie_reg']) || isset($_POST['ordenC_Correlativo_up'])) {
 
     // instancia al controlador
-    require_once "../controller/empresaControlador.php";
-    $ins_empresa = new empresaControlador();
+    require_once "../controller/ordenCompraControlador.php";
+    $ins_ordenC = new ordenCompraControlador();
 
-    // agregar empresa
-    if (isset($_POST['empresa_nombre_reg'])) {
-        echo $ins_empresa->agregar_empresa_controlador();
+    // agregar orden de compra
+    if (isset($_POST['ordenC_Serie_reg'])) {
+        echo $ins_ordenC->agregar_ordenCompra_controlador();
     }
-    // actualizar empresa
+    // actualizar orden de compra 
     if (isset($_POST['empresa_id_up'])) {
         echo $ins_empresa->actualizar_empresa_controlador();
     }
