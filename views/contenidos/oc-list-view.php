@@ -31,15 +31,22 @@ require_once "./controller/proveedorControlador.php";
                     <div class="row mb-2">
                         <!-- BUSCADOR Y FILTROS -->
                         <div class="col-xl-8">
+                            <!-- generar formulario para filtros -->
                             <form form class="FormularioAjax" action="<?php echo SERVERURL; ?>ajax/ordenCompraAjax.php" method="POST" data-form="save" autocomplete="off">
-                                <div class="col-auto">
+                                <div class="col-xl-4">
                                     <div class="d-flex align-items-center">
                                         <label for="status-select" class="me-2">Año</label>
-                                        <select class="form-select" id="yearSelect">
+                                        <select class="form-select" id="">
+                                            <option value="0">Seleccione el año</option>
+                                            <option value="">2024</option>
+                                            <option value="">2025</option>
+                                            <option value="">2026</option>
+                                            <option value="">2027</option>
+                                            <option value="">2028</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-xl-4">
                                     <div class="d-flex align-items-center">
                                         <label for="status-select" class="me-2">Mes</label>
                                         <select class="form-select" id="status-select">
@@ -89,7 +96,19 @@ require_once "./controller/proveedorControlador.php";
                                                             <label class="form-label">Fecha de Vencimiento</label>
                                                             <input type="date" class="form-control" name="ordenC_FechaVencimiento_reg" required>
                                                         </div>
-                                                        <div class="mb-3">
+                                                        <div class="col-md-4" mb-3>
+                                                            <label for="example-select" class="form-label">Estado</label>
+                                                            <select class="form-select" name="ordenC_Estado_reg" id="example-select">
+                                                                <option value="">Elegir...</option>
+                                                                <option value="1">Pagado</option>
+                                                                <option value="2">En Espera de Autorización</option>
+                                                                <option value="3">Pago fallido</option>
+                                                                <option value="4">Anulado</option>
+                                                                <option value="5">Emitido</option>
+                                                                <option value="6">Completo</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-8 mb-3">
                                                             <label for="example-select" class="form-label">Proveedores</label>
                                                             <select class="form-select" id="example-select" name="ordenC_Proveedor_reg">
                                                                 <option value="0">--Selecciona Proveedor</option>
@@ -124,8 +143,7 @@ require_once "./controller/proveedorControlador.php";
                                                                 <option>Gasto Administrativo</option>
                                                                 <option>Refacturable</option>
                                                             </select>
-                                                        </div>
-                                                        <div class="col-md-3 mb-3">
+                                                        </div> x| <div class="col-md-3 mb-3">
                                                             <input type="checkbox" class="form-check-input" id="customCheckcolor1" name="ordenC_Inafecto_reg">
                                                             <label class="form-check-label" for="customCheckcolor1">Inafecto</label>
                                                         </div>
@@ -151,15 +169,6 @@ require_once "./controller/proveedorControlador.php";
                                                         <div class="col-md-5 mb-3">
                                                             <label class="form-label">Detracción</label>
                                                             <input type="number" step="0.01" class="form-control" name="Compra_Detraccion_reg" required>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Estado</label>
-                                                            <select class="form-select" name="ordenC_Estado_reg" required>
-                                                                <option value="">Selecciona...</option>
-                                                                <option value="1">Pagado</option>
-                                                                <option value="0">Pendiente</option>
-                                                                <option value="">Anulado</option>
-                                                            </select>
                                                         </div>
                                                         <!-- ORDEN DE COMPRA  -->
                                                         <div class="mb-3">
