@@ -82,11 +82,11 @@ require_once "./controller/proveedorControlador.php";
                                                     <div class="row">
                                                         <div class="col-md-3 mb-3">
                                                             <label class="form-label">Serie</label>
-                                                            <input type="text" class="form-control" name="ordenC_Serie_reg" maxlength="4" required>
+                                                            <input type="text" pattern="^\d{4}$" class="form-control" name="ordenC_Serie_reg" maxlength="4" required>
                                                         </div>
                                                         <div class="col-md-3 mb-3">
                                                             <label class="form-label">Correlativo</label>
-                                                            <input type="text" class="form-control" name="ordenC_Correlativo_reg" maxlength="10" required>
+                                                            <input type="text" pattern="^\d{10}$" class="form-control" name="ordenC_Correlativo_reg" maxlength="10" required>
                                                         </div>
                                                         <div class="col-md-3 mb-3">
                                                             <label class="form-label">Fecha de Emisión</label>
@@ -132,9 +132,9 @@ require_once "./controller/proveedorControlador.php";
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Descripción</label>
-                                                            <textarea class="form-control" name="ordenC_Detalle_reg" rows="2" required></textarea>
+                                                            <textarea pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" class="form-control" name="ordenC_Detalle_reg" rows="2" required placeholder="Ingresa las descripción de la orden"></textarea>
                                                         </div>
-                                                        <div class="mb-3">
+                                                        <div class=" mb-3">
                                                             <label for="example-select" class="form-label">Tipo de Cssto</label>
                                                             <select class="form-select" id="example-select" name="ordenC_TCosto_reg">
                                                                 <option value="">Seleccionar...</option>
@@ -151,24 +151,24 @@ require_once "./controller/proveedorControlador.php";
                                                         <!-- Calculo de precio total de la orden de compra -->
                                                         <div class="col-md-4 mb-4">
                                                             <label class="form-label">Subtotal</label>
-                                                            <input type="number" step="0.01" class="form-control" name="ordenC_Subtotal_reg" name="orden" required>
+                                                            <input type="text" step="0.01" class="form-control" name="ordenC_Subtotal_reg" name="orden" required>
                                                         </div>
                                                         <div class="col-md-4 mb-4">
                                                             <label class="form-label">IGV</label>
-                                                            <input type="number" step="0.01" class="form-control" name="ordenC_Igv_reg" required>
+                                                            <input type="text" step="0.01" class="form-control" name="ordenC_Igv_reg" required>
                                                         </div>
                                                         <div class="col-md-4 mb-4">
                                                             <label class="form-label">Total</label>
-                                                            <input type="number" step="0.01" class="form-control" name="ordenC_Total_reg" required>
+                                                            <input type="text" step="0.01" class="form-control" name="ordenC_Total_reg" required>
                                                         </div>
                                                         <!-- seleccionar si la orden de compra existe percepción  o detracción -->
                                                         <div class="col-md-5 mb-3">
                                                             <label class="form-label">Percepción</label>
-                                                            <input type="number" step="0.01" class="form-control" name="ordenC_Percepcion_reg" required>
+                                                            <input type="text" step="0.01" class="form-control" name="ordenC_Percepcion_reg" required>
                                                         </div>
                                                         <div class="col-md-5 mb-3">
                                                             <label class="form-label">Detracción</label>
-                                                            <input type="number" step="0.01" class="form-control" name="Compra_Detraccion_reg" required>
+                                                            <input type="text" step="0.01" class="form-control" name="Compra_Detraccion_reg" required>
                                                         </div>
                                                         <!-- ORDEN DE COMPRA  -->
                                                         <div class="mb-3">

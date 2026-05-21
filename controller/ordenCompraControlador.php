@@ -45,5 +45,42 @@ class ordenCompraControlador extends ordenCompraModelo
         $OC_Bancopdf = mainModel::limpiar_cadena($_POST['ordenC_Bancopdf_reg']);
         $OC_Facturapdf = mainModel::limpiar_cadena($_POST['ordenC_Facturapdf_reg']);
         $OC_Guiapdf = mainModel::limpiar_cadena($_POST['ordenC_GuiaPdf_reg']);
+
+
+        // comprobar los campos vacios 
+        if ($OC_Serie == "" || $OC_Correlativo == "" || $OC_fechaEmision == "" || $OC_proveedor == "" || $OC_FechaVencimiento == "" || $OC_Estado == "" || $OC_Descricion == "" ||  $OC_TipoCosto == "") {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "No has llenado todos los campos que son obligatorios",
+                "Icono" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        // verificar la integridad de los datos
+        if (mainModel::verificar_datos("^\d{4}$", $OC_Serie)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "El Nú
+                mero de Serie no coincide con el formato solicitado",
+                "Icono" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+        if (mainModel::verificar_datos("^\d{10}$", $OC_Correlativo)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "El Nú
+                mero de Serie no coincide con el formato solicitado",
+                "Icono" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
     }
 }
